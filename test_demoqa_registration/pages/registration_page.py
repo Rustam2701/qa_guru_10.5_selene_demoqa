@@ -16,6 +16,7 @@ class RegistrationPage:
         self.picture = browser.element('#uploadPicture')
         self.current_address = browser.element('#currentAddress')
         self.state = browser.element('#react-select-3-input')
+        self.city = browser.element('#react-select-3-input')
 
     def open(self):
         browser.open("/automation-practice-form")
@@ -69,32 +70,46 @@ class RegistrationPage:
         self.current_address.type(user.current_address)
         return self
 
-    def select_state(self, value):
-        browser.element('#react-select-3-input').type(value).press_enter()
+    def select_state(self, user: User):
+        self.state.type(user.state).press_enter()
         return self
 
     def select_city(self, user: User):
-        self.state.type(user.state).press_enter()
+        self.city.type(user.city).press_enter()
         return self
 
     def submit(self):
         browser.element('#submit').press_enter()
         return self
 
-    def should_register_user_with(self, full_name, email, gender, number, date_of_birth, subjects, hobbies, photo,
-                                  current_address, state_city):
+    def user_registration(self, user: User):
+        self.fill_first_name(user) \
+            .fill_last_name(user) \
+            .fill_email(user) \
+            .select_gender(user) \
+            .fill_mobile_number(user) \
+            .fill_date_of_birth(user) \
+            .type_subject(user) \
+            .select_hobbies(user) \
+            .upload_picture(user) \
+            .input_address(user) \
+            .select_state(user) \
+            .select_city(user) \
+            .submit()
+
+    def should_register_user_with(self, user: User):
         browser.element('#example-modal-sizes-title-lg').should(have.exact_text('Thanks for submitting the form'))
         browser.element('.table').all('td').even.should(
             have.texts(
-                full_name,
-                email,
-                gender,
-                number,
-                date_of_birth,
-                subjects,
-                hobbies,
-                photo,
-                current_address,
-                state_city
+                f'{user.first_name}, {user.last_name}',
+                {user.email},
+                {user.gender},
+                {user.phone_number},
+                f'{user.date_of_birth_year}, {user.date_of_birth_month}, {user.date_of_birth_day}',
+                {user.subjects},
+                {user.hobbies},
+                {user.picture},
+                {user.current_address},
+                f'{user.state}, {user.city}',
             )
         )
