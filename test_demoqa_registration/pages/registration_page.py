@@ -15,8 +15,8 @@ class RegistrationPage:
         self.hobbies = browser.all('[for^=hobbies-checkbox]')
         self.picture = browser.element('#uploadPicture')
         self.current_address = browser.element('#currentAddress')
-        self.state = browser.element('#react-select-3-input')
-        self.city = browser.element('#react-select-3-input')
+        self.state = browser.all('[id^=react-select][id*=option]')
+        self.city = browser.all('[id^=react-select][id*=option]')
 
     def open(self):
         browser.open("/automation-practice-form")
@@ -71,11 +71,13 @@ class RegistrationPage:
         return self
 
     def select_state(self, user: User):
-        self.state.type(user.state).press_enter()
+        browser.element('#state').click()
+        self.state.element_by(have.exact_text(user.state)).click()
         return self
 
     def select_city(self, user: User):
-        self.city.type(user.city).press_enter()
+        browser.element('#city').click()
+        self.city.element_by(have.exact_text(user.city)).click()
         return self
 
     def submit(self):
@@ -101,15 +103,15 @@ class RegistrationPage:
         browser.element('#example-modal-sizes-title-lg').should(have.exact_text('Thanks for submitting the form'))
         browser.element('.table').all('td').even.should(
             have.texts(
-                f'{user.first_name}, {user.last_name}',
+                f'{user.first_name} {user.last_name}',
                 {user.email},
                 {user.gender},
                 {user.phone_number},
-                f'{user.date_of_birth_year}, {user.date_of_birth_month}, {user.date_of_birth_day}',
+                f'{user.date_of_birth_day} {user.date_of_birth_month},{user.date_of_birth_year}',
                 {user.subjects},
                 {user.hobbies},
                 {user.picture},
                 {user.current_address},
-                f'{user.state}, {user.city}',
+                f'{user.state} {user.city}',
             )
         )
