@@ -84,3 +84,4 @@ class RegistrationPage:
                 state_city
             )
         )
+
