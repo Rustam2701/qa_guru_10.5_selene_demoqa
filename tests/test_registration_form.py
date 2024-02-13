@@ -1,5 +1,5 @@
 from selene import browser, be, have, by
-import os.path
+import os
 
 
 def test_for_demoqa():
@@ -18,9 +18,7 @@ def test_for_demoqa():
     browser.element('.subjects-auto-complete__multi-value__label').should(have.text('English'))
 
     browser.element('[for="hobbies-checkbox-1"]').click()
-    browser.element('#uploadPicture').send_keys(os.path.abspath(
-        "/Users/bella/projects/qa_guru_10.5_selene_demoqa/tests/111.png"
-    ))
+    browser.element('#uploadPicture').send_keys(os.path.abspath('111.png'))
     browser.element('#currentAddress').type('Ленина 139')
     browser.element('#react-select-3-input').type('Haryana').press_enter()
     browser.element('#react-select-4-input').type('Karnal').press_enter()
