@@ -6,7 +6,7 @@ import allure
 @allure.title("Registration form")
 def test_for_demoqa():
     with allure.step('Open form'):
-        browser.open('/')
+        browser.open('https://demoqa.com/automation-practice-form')
 
     with allure.step('Fill form user data'):
         browser.element('#firstName').type('Светлана')
