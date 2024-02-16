@@ -1,0 +1,5 @@
+{'level': 'SEVERE', 'message': 'https://cdn.ad.plus/player/adplus.js 414:84 Uncaught TypeError: c(...).setup is not a function', 'source': 'javascript', 'timestamp': 1708094370507}
+{'level': 'SEVERE', 'message': 'https://www.googletagservices.com/tag/js/gpt.js - Failed to load resource: net::ERR_TIMED_OUT', 'source': 'network', 'timestamp': 1708094399266}
+{'level': 'SEVERE', 'message': 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js - Failed to load resource: net::ERR_TIMED_OUT', 'source': 'network', 'timestamp': 1708094399543}
+{'level': 'SEVERE', 'message': 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5889298451609146 - Failed to load resource: net::ERR_TIMED_OUT', 'source': 'network', 'timestamp': 1708094399557}
+{'level': 'SEVERE', 'message': 'https://stats.g.doubleclick.net/j/collect?t=dc&aip=1&_r=3&v=1&_v=j101&tid=UA-109033876-1&cid=1048554634.1708094370&jid=717643703&gjid=852824420&_gid=1596289275.1708094370&_u=YEBAAEAAAAAAACAAI~&z=449409541 - Failed to load resource: net::ERR_TIMED_OUT', 'source': 'network', 'timestamp': 1708094400157}
